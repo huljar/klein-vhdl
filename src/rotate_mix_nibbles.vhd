@@ -25,7 +25,7 @@ begin
     mix_mul_in(63 downto 56) <= rotated(63 downto 56) xor rotated(55 downto 48);
     mix_mul_in(55 downto 48) <= rotated(55 downto 48) xor rotated(47 downto 40);
     mix_mul_in(47 downto 40) <= rotated(47 downto 40) xor rotated(39 downto 32);
-    mix_mul_in(39 downto 32) <= rotated(40 downto 32) xor rotated(63 downto 56);
+    mix_mul_in(39 downto 32) <= rotated(39 downto 32) xor rotated(63 downto 56);
 
     mix_mul_in(31 downto 24) <= rotated(31 downto 24) xor rotated(23 downto 16);
     mix_mul_in(23 downto 16) <= rotated(23 downto 16) xor rotated(15 downto 8);

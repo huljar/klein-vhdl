@@ -27,6 +27,7 @@ begin
 
     data_out(key_bits(k)-1 downto key_bits(k)-19) <= swapped(key_bits(k)-1 downto key_bits(k)-19);
     data_out(key_bits(k)-20 downto key_bits(k)-24) <= swapped(key_bits(k)-20 downto key_bits(k)-24) xor rc;
+    data_out(key_bits(k)-25 downto (key_bits(k)/2)-8) <= swapped(key_bits(k)-25 downto (key_bits(k)/2)-8);
     GEN_SBOXES: for i in 0 to 3 generate
         SX: sbox port map(
             data_in => swapped((key_bits(k)/2)-9-(4*i) downto (key_bits(k)/2)-9-(4*i)-3),
