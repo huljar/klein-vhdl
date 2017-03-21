@@ -11,6 +11,5 @@ The key size to use is specified via an *enum*, which is passed
 as generic parameter `k` to the *klein_top* top level module.
 
 ## License
-The code is licensed under the terms of the GNU Lesser General
-Public License (LGPL) Version 3. For more information, please see
-the [LICENSE.md](LICENSE.md) file.
+The code is licensed under the terms of the MIT license. For more
+information, please see the [LICENSE.md](LICENSE.md) file.
