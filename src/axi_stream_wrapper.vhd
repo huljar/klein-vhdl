@@ -27,7 +27,7 @@ architecture behavioral of axi_stream_wrapper is
     constant ciphertext_writes: natural := 2;
 
     signal state: state_type;
-    signal counter: natural range 0 to rounds(k);
+    signal counter: natural range 0 to rounds(k)+1;
     
     signal ip_plaintext: std_logic_vector(63 downto 0);
     signal ip_key: std_logic_vector(key_bits(k)-1 downto 0);
