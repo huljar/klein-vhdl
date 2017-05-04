@@ -62,22 +62,24 @@ begin
 
     data_key_added <= data_state xor key_state(key_bits(k)-1 downto key_bits(k)-64);
 
-    process(clk, reset, plaintext, key)
+    process(clk)
     begin
-        if reset = '1' then
-            data_state <= plaintext;
-            key_state <= key;
-            round_counter <= "00001";
-            ciphertext <= x"0000000000000000";
-        elsif rising_edge(clk) then
-            data_state <= data_nibbles_mixed;
-            key_state <= key_updated;
-            round_counter <= std_logic_vector(unsigned(round_counter) + 1);
+        if rising_edge(clk) then
+            if reset = '1' then
+                data_state <= plaintext;
+                key_state <= key;
+                round_counter <= "00001";
+                ciphertext <= (others => '0');
+            else
+                data_state <= data_nibbles_mixed;
+                key_state <= key_updated;
+                round_counter <= std_logic_vector(unsigned(round_counter) + 1);
 
-            case round_counter is
-                when final_rc(k) => ciphertext <= data_key_added;
-                when others => ciphertext <= x"0000000000000000";
-            end case;
+                case round_counter is
+                    when final_rc(k) => ciphertext <= data_key_added;
+                    when others => ciphertext <= (others => '0');
+                end case;
+            end if;
         end if;
     end process;
 end architecture;
